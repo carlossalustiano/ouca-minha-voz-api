@@ -29,8 +29,9 @@ router.post('/register', async (request, response) => {
         password: hashPassword,
       },
     });
-    response.status(201).send("Usuário criado com sucesso.");
+    response.status(201).json(request.body);
   } catch (error) {
+    console.log(error);
     response.status(500).json({ message: "Error no Servidor, tente novamente." });
   }
 });

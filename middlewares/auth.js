@@ -11,10 +11,10 @@ const auth = (request, response, next) => {
 
     try {
         const decoded = jwt.verify(token.replace('Bearer ', ''), JWT_SECRET)
+        next();
     } catch (error) {
         return response.status(401).json({ message: 'Token Inválido.' })
     }
-    next();
 }
 
 export default auth
